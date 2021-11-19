@@ -1,0 +1,183 @@
+//회원가입...
+//공지사항...
+//form관련 css
+@import "vars";
+@import "mixins";
+.board {
+  width: 100%;
+  border-top: 1px solid $main-color;
+  tr {
+    border-bottom: 1px solid $border-color;
+    &:hover {
+      background-color: $light-gray-color;
+    }
+    th,
+    td {
+      padding: 15px 0;
+      text-align: center;
+    }
+    .subject {
+      text-align: left;
+    }
+  }
+}
+.write {
+  tbody {
+    th {
+      vertical-align: middle;
+      background-color: $light-gray-color;
+      padding: 0 15px;
+      text-align: left;
+      .require {
+        color: $main-color;
+        margin-left: 10px;
+      }
+    }
+    td {
+      text-align: left;
+      padding: 15px;
+      input[type="text"],
+      input[type="password"] {
+        min-width: 300px;
+        height: 40px;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 0;
+        border: none;
+        border: 1px solid $border-color;
+        box-sizing: border-box;
+      }
+      select {
+        height: 40px;
+        min-width: 150px;
+        //padding 잘 안 먹힘
+      }
+      textarea {
+        height: 300px;
+        padding: 15px;
+        border: 1px solid $border-color;
+        box-sizing: border-box;
+        width: 100%;
+        resize: none;
+      }
+    }
+  }
+}
+.pagination {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  ul {
+    display: flex;
+    margin: 0 20px;
+    .active {
+      a {
+        background-color: $main-color;
+        border-color: $main-color;
+        color: $white-color;
+        overflow: hidden;
+        @include longShadow(darken($main-color, 20), right, 30);
+      }
+    }
+  }
+  a {
+    width: 40px;
+    height: 40px;
+    @include flexCenter();
+    border: 1px solid $border-color;
+  }
+}
+
+.search {
+  padding: 50px 0;
+  margin-top: 50px;
+  background: $light-gray-color;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  input[type="text"] {
+    min-width: 400px;
+    height: 40px;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 0;
+    border: none;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+  }
+  select {
+    height: 40px;
+    min-width: 150px;
+    //padding 잘 안 먹힘
+  }
+  button {
+    height: 40px;
+    padding: 0 20px;
+    border-color: $text-color;
+    color: $white-color;
+    vertical-align: top; //input이랑 높이 맞추기 위함
+  }
+}
+
+.btns {
+  display: flex;
+  margin-top: 50px;
+  &.right {
+    justify-content: flex-end;
+  }
+  &.center {
+    justify-content: center;
+  }
+  button,
+  a {
+    height: 50px;
+    padding: 0 40px;
+    border-radius: 5px;
+    overflow: hidden;
+    color: $white-color;
+    margin: 0 5px;
+    @include flexCenter();
+
+    &.normal {
+      background-color: $text-color;
+      @include longShadow(darken($text-color, 10), right, 40);
+    }
+    &.confirm {
+      background-color: $main-color;
+      @include longShadow(darken($main-color, 10), right, 40);
+    }
+    &.cancel {
+      background-color: $gray-color;
+      @include longShadow(darken($gray-color, 10), right, 40);
+    }
+  }
+}
+.checkbox {
+  input {
+    display: none;
+  }
+  input:checked ~ .label:after {
+    background-color: $main-color;
+    border-color: $main-color;
+    color: $white-color;
+    content: "⛺쳌\2714"; //유니코드
+    text-align: center;
+    line-height: 20px;
+    // border-color: transparent; 투명
+  }
+  .label {
+    display: flex;
+    align-items: center;
+    user-select: none;
+    &:after {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ccc;
+      border-radius: 3px;
+      margin-left: 6px;
+    }
+  }
+}
