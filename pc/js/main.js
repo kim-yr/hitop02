@@ -1,3 +1,4 @@
+Splitting();
 const mainVisualSlider = new Swiper("#mainVisual", {
   autoplay: true,
   speed: 1000,
@@ -23,6 +24,9 @@ for (let i = 0; i < gnbItem.length; i++) {
     header.classList.remove("open");
   });
 }
+
+gsap.from("#mainVisual .slogan .main .char", { opacity: 0, x: 150, ease: "power4", duration: 1, stagger: 0.1 });
+gsap.from("#mainVisual .slogan .sub .char", { opacity: 0, x: 150, ease: "power4", duration: 1, delay: 2, stagger: 0.02 });
 
 /**
 const iq = 182;
