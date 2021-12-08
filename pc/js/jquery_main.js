@@ -87,3 +87,12 @@ tabMenu.on("click", function () {
   //const siblings = $(this).siblings("li");
   //siblings.removeClass("on");
 });
+const lnbItem = $("#lnb .contents .item");
+lnbItem.on("mouseenter", function () {
+  const selectedUL = $(this).find("ul");
+  selectedUL.stop().slideDown(200);
+});
+lnbItem.on("mouseleave", function () {
+  const selectedUL = $(this).find("ul");
+  selectedUL.stop().slideUp(100);
+});
