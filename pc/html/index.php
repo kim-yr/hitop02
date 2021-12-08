@@ -179,4 +179,16 @@
   </div>
 </main>
 <!-- main end -->
+
+<aside class="popup">
+  <div class="contents">
+    <img src="../images/main/popup.png" alt="">
+  </div>
+  <div class="btns">
+    <button class="oneday">오늘 하루 이 창을 열지 않기</button>
+    <button class="close">닫기</button>
+  </div>
+</aside>
+
+
 <? include("../include/footer.html"); ?>

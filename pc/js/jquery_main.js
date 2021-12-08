@@ -96,3 +96,30 @@ lnbItem.on("mouseleave", function () {
   const selectedUL = $(this).find("ul");
   selectedUL.stop().slideUp(100);
 });
+
+const popup = $(".popup");
+const btnOneday = popup.find(".oneday");
+const btnClose = popup.find(".close");
+btnOneday.on("click", function () {
+  //popup.hide();
+  gsap.to(".popup", {
+    duration: 1,
+    top: "-100%",
+    ease: "back.in",
+    onComplete: function () {
+      popup.remove();
+    },
+  });
+});
+//cookie를 이용
+btnClose.on("click", function () {
+  //popup.hide();
+  gsap.to(".popup", {
+    duration: 1,
+    top: "-100%",
+    ease: "back.in",
+    onComplete: function () {
+      popup.remove();
+    },
+  });
+});
