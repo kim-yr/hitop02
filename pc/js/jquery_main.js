@@ -64,3 +64,26 @@ $(window).on("scroll", function () {
     }
   }
 });
+
+//IIFE   변수를 하나의 영역으로 만들어서 충돌 방지...
+
+/*
+(function () {
+  console.log("나는 즉시실행함수입니다.");
+})();
+*/
+
+const tabBox = $(".tabBox");
+const tabMenu = tabBox.find(".tabMenu > ul > li");
+const tabContents = tabBox.find(".tabContents > ul > li");
+
+tabMenu.on("click", function () {
+  $(this).addClass("on").siblings("li").removeClass("on");
+  tabContents.hide(); // display:none
+  tabContents.eq($(this).index()).show(); // display:none
+  console.log($(this).index());
+
+  //method chaining
+  //const siblings = $(this).siblings("li");
+  //siblings.removeClass("on");
+});

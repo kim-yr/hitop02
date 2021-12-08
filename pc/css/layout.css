@@ -30,9 +30,13 @@ img { vertical-align: top; }
 
 #header .container #gnb .list > li { position: relative; }
 
-#header .container #gnb .list > li > a { font-size: 18px; text-transform: capitalize; font-weight: 500; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; height: 90px; padding: 0 50px; }
+#header .container #gnb .list > li > a { font-size: 18px; text-transform: capitalize; font-weight: 500; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; height: 90px; padding: 0 50px; position: relative; }
+
+#header .container #gnb .list > li > a:after { content: ""; display: block; position: absolute; height: 2px; bottom: 0; left: 20px; right: 20px; background-color: #fff; -webkit-transform: scaleX(0); transform: scaleX(0); -webkit-transition: 0.25s ease; transition: 0.25s ease; }
 
 #header .container #gnb .list > li:hover > a { background-color: #bf0c14; }
+
+#header .container #gnb .list > li:hover > a:after { -webkit-transform: scale(1); transform: scale(1); }
 
 #header .container #gnb .list > li:hover .depth02 { background-color: #bf0c14; }
 

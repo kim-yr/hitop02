@@ -42,7 +42,7 @@
   <div id="subContents">
     <h3 class="subTitle">오시는 길</h3>
     <div class="contents">
-      <div class="tabBox">
+      <div class="tabBox locationTab">
         <div class="tabMenu">
           <ul>
             <li class="on">서울 사무실</li>

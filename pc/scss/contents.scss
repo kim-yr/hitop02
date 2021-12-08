@@ -123,6 +123,7 @@
         @include flexCenter();
         overflow: hidden;
         border-left: none;
+        cursor: pointer;
         &:nth-child(1) {
           border-left: 1px solid $border-color;
         }
@@ -131,6 +132,16 @@
           border-color: $main-color;
           color: $white-color;
           @include longShadow(darken($main-color, 10), right, 40);
+        }
+      }
+    }
+  }
+  .tabContents {
+    > ul {
+      > li {
+        display: none;
+        &:first-child {
+          display: block;
         }
       }
     }
