@@ -1,31 +1,39 @@
-var mapContainer = document.getElementById("map"), // 지도를 표시할 div
-  mapOption = {
-    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-    level: 3, // 지도의 확대 레벨
-  };
-
-// 지도를 생성합니다
-var map = new kakao.maps.Map(mapContainer, mapOption);
-
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
-
 // 주소로 좌표를 검색합니다
 
 const locationTab = $(".locationTab");
 const locationTabMenu = locationTab.find(".tabMenu > ul > li");
+const addressList = [
+  { address: "서울 중구 세종대로 110", title: "서울시청", link: "http://www.daum.net" },
+  { address: "서울특별시 영등포구 선유로 130", title: "우리학원", link: "http://www.naver.com" },
+  { address: "경기 과천시 대공원광장로 102", title: "서울대공원", link: "http://www.google.com" },
+];
 locationTabMenu.on("click", function () {
+  loadMap(addressList[$(this).index()]);
+  /*
   if ($(this).index() === 0) {
-    loadMap("서울 중구 세종대로 110");
+    loadMap({ address: "서울 중구 세종대로 110", title: "서울시청", link: "http://www.daum.net" });
   } else if ($(this).index() === 1) {
-    loadMap("서울특별시 영등포구 선유로 130");
+    loadMap({ title: "우리학원", link: "http://www.naver.com", title: "서울특별시 영등포구 선유로 130" });
   } else if ($(this).index() === 2) {
-    loadMap("경기 과천시 대공원광장로 102");
+    loadMap({ address: "경기 과천시 대공원광장로 102", title: "서울대공원", link: "http://www.google.com" });
   }
+  */
 });
 
-function loadMap(address) {
-  geocoder.addressSearch(address, function (result, status) {
+function loadMap(mapObj) {
+  $("#map").html("");
+  var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+    mapOption = {
+      center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+      level: 3, // 지도의 확대 레벨
+    };
+
+  // 지도를 생성합니다
+  var map = new kakao.maps.Map(mapContainer, mapOption);
+
+  // 주소-좌표 변환 객체를 생성합니다
+  var geocoder = new kakao.maps.services.Geocoder();
+  geocoder.addressSearch(mapObj.address, function (result, status) {
     // 정상적으로 검색이 완료됐으면
     if (status === kakao.maps.services.Status.OK) {
       var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -52,8 +60,8 @@ function loadMap(address) {
 
       // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
       var content = `<div class="customOverlay">
-                      <a href="https://map.kakao.com/link/map/11394059" target="_blank">
-                          <span class="title">우리 학원</span>
+                      <a href="${mapObj.link}" target="_blank">
+                          <span class="title">${mapObj.title}</span>
                       </a>
                      </div>`;
 
@@ -72,4 +80,4 @@ function loadMap(address) {
     }
   });
 }
-loadMap("서울 중구 세종대로 110");
+loadMap(addressList[0]);
