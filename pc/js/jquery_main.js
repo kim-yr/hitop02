@@ -34,6 +34,7 @@ const gnbList = $("#gnb .list > li");
 
 const header = $("#header");
 
+const btnTop = $(".btnTop");
 /*
 // fulldown 메뉴
 gnbList.on("mouseenter", function () {
@@ -52,17 +53,28 @@ gnbList.on("mouseleave", function () {
   selectedDepth02.stop().slideUp(100);
 });
 $(window).on("scroll", function () {
-  //console.log($(window).scrollTop());
+  // console.log($(window).scrollTop());
   const st = $(window).scrollTop();
   if (st > 0) {
     if (!header.hasClass("scroll")) {
       header.addClass("scroll");
     }
+    if (!btnTop.hasClass("on")) {
+      btnTop.addClass("on");
+    }
   } else {
     if (header.hasClass("scroll")) {
       header.removeClass("scroll");
     }
+    if (btnTop.hasClass("on")) {
+      btnTop.removeClass("on");
+    }
   }
+});
+
+btnTop.on("click", function () {
+  // $(window).scrollTop(0);
+  gsap.to("html,body", { scrollTop: 0, duration: 0.5 }); //부드럽게 올라가기
 });
 
 //IIFE   변수를 하나의 영역으로 만들어서 충돌 방지...
@@ -101,8 +113,9 @@ const popup = $(".popup");
 const btnOneday = popup.find(".oneday");
 const btnClose = popup.find(".close");
 btnOneday.on("click", function () {
+  Cookies.set("oneday", "one", { expires: 1 });
   //popup.hide();
-  gsap.to(".popup", {
+  gsap.to(".popup .inner", {
     duration: 1,
     top: "-100%",
     ease: "back.in",
@@ -111,10 +124,16 @@ btnOneday.on("click", function () {
     },
   });
 });
+console.log(Cookies.get("oneday"));
+if (Cookies.get("oneday") === "one") {
+  popup.hide();
+} else {
+  popup.show();
+}
 //cookie를 이용
 btnClose.on("click", function () {
   //popup.hide();
-  gsap.to(".popup", {
+  gsap.to(".popup .inner", {
     duration: 1,
     top: "-100%",
     ease: "back.in",

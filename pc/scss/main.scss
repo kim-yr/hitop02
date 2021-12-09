@@ -276,25 +276,37 @@ article {
 .popup {
   position: fixed;
   z-index: 100000;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  .contents {
-    padding: 50px;
-  }
-  .btns {
-    display: flex;
-    border-top: 1px solid #ccc;
-    button {
-      width: 50%;
-      padding: 20px 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  left: 0;
+  top: 0;
+  display: none;
+  .inner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    .content {
+      padding: 50px;
+    }
+
+    .btns {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      &.oneday {
-        background-color: #111;
-        color: #fff;
+      // border-top: 1px solid #ccc;
+      button {
+        width: 50%;
+        padding: 20px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ccc;
+        &.oneday {
+          background-color: #111;
+          color: #fff;
+        }
       }
     }
   }
